@@ -32,7 +32,16 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/FixedInputProvider.h" />
+		<Unit filename="include/InputProvider.h" />
+		<Unit filename="include/LiveInputProvider.h" />
+		<Unit filename="lbf_1.0.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="main.cpp" />
+		<Unit filename="src/FixedInputProvider.cpp" />
+		<Unit filename="src/InputProvider.cpp" />
+		<Unit filename="src/LiveInputProvider.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

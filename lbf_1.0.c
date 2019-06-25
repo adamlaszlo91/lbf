@@ -193,7 +193,7 @@ void interactive_mode(){
 }
 
 // main
-int main(int argc, char *argv[]){
+/*int main(int argc, char *argv[]){
     if (argc == 1){
         // if there's no argument, start interactive mode
         interactive_mode();
@@ -205,4 +205,4 @@ int main(int argc, char *argv[]){
         printf("error: too many arguments.");
         return 0;
     }
-}
+}*/
