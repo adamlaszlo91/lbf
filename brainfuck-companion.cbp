@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -22,6 +23,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -32,16 +34,24 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="include/FixedInputProvider.h" />
+		<Unit filename="include/BrainfuckExecutor.h" />
+		<Unit filename="include/FixedInstructionProvider.h" />
 		<Unit filename="include/InputProvider.h" />
-		<Unit filename="include/LiveInputProvider.h" />
+		<Unit filename="include/InstructionProvider.h" />
+		<Unit filename="include/LiveInstructionProvider.h" />
+		<Unit filename="include/StdInputProvider.h" />
+		<Unit filename="include/Tape.h" />
 		<Unit filename="lbf_1.0.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="main.cpp" />
-		<Unit filename="src/FixedInputProvider.cpp" />
+		<Unit filename="src/BrainfuckExecutor.cpp" />
+		<Unit filename="src/FixedInstructionProvider.cpp" />
 		<Unit filename="src/InputProvider.cpp" />
-		<Unit filename="src/LiveInputProvider.cpp" />
+		<Unit filename="src/InstructionProvider.cpp" />
+		<Unit filename="src/LiveInstructionProvider.cpp" />
+		<Unit filename="src/StdInputProvider.cpp" />
+		<Unit filename="src/Tape.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

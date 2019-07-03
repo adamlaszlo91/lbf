@@ -1,8 +1,10 @@
 #include <iostream>
 #include <fstream>
-#include "include/InputProvider.h"
-#include "include/FixedInputProvider.h"
-#include "include/LiveInputProvider.h"
+#include "include/InstructionProvider.h"
+#include "include/FixedInstructionProvider.h"
+#include "include/LiveInstructionProvider.h"
+#include "include/BrainfuckExecutor.h"
+#include "include/StdInputProvider.h"
 
 using namespace std;
 
@@ -23,21 +25,28 @@ bool doesFileExist(string fullPath){
 }
 
 int main(int argc, char *argv[]){
-  InputProvider* inputProvider;
+  InstructionProvider* instructionProvider;
   // TODO: argc > 1
   if (argc > 0){
     // TODO: Use parameter
-    string path = "examples\\hw.bf";
+    string path = "examples\\reverse.bf";
     if (doesFileExist(path)){
       string fileContent = readFileContent(path);
-      cout << fileContent;  // TODO: remove
-      inputProvider = new FixedInputProvider(fileContent);
+      instructionProvider = new FixedInstructionProvider(fileContent);
     }else{
       cerr << "The input file does not exist: " << path;
       return 1;
     }
   }else{
-    inputProvider = new LiveInputProvider();
+    instructionProvider = new LiveInstructionProvider();
+  }
+
+  BrainfuckExecutor* executor = new BrainfuckExecutor(instructionProvider, new StdInputProvider());
+  try{
+    executor->execute();
+  }catch( const std::exception& e ) {
+    // do stuff with exception...
+    cerr << e.what();
   }
 
   return 0;

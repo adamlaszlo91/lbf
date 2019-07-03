@@ -2,11 +2,10 @@
 #define INPUTPROVIDER_H
 
 
-class InputProvider
-{
+class InputProvider{
   public:
-    virtual char getNextInput() = 0;
-    virtual bool hasNextInput() = 0;
+    InputProvider();
+    virtual char getChar() = 0;
 
   protected:
 
