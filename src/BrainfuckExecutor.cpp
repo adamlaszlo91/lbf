@@ -2,9 +2,10 @@
 
 using namespace std;
 
-BrainfuckExecutor::BrainfuckExecutor(InstructionProvider* instructionProvider, InputProvider* inputProvider){
+BrainfuckExecutor::BrainfuckExecutor(InstructionProvider* instructionProvider, InputProvider* inputProvider, Display* display){
   this->instructionProvider = instructionProvider;
   this->inputProvider = inputProvider;
+  this->display = display;
   tape = new Tape();
 }
 
@@ -34,8 +35,7 @@ void BrainfuckExecutor::executeInstruction(char instruction){
       tape->decreaseValueAtPointer(dataPointer);
       break;
     case '.':
-      // TODO: Use Display class
-      cout << tape->getValueAtPointer(dataPointer);
+      display->printOutput(tape->getValueAtPointer(dataPointer));
       break;
     case ',':
       tape->setValueAtPointer(dataPointer, inputProvider->getChar());

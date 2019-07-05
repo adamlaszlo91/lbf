@@ -4,7 +4,6 @@
 
 class InputProvider{
   public:
-    InputProvider();
     virtual char getChar() = 0;
 
   protected:

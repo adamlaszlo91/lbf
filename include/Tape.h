@@ -1,8 +1,8 @@
 #ifndef TAPE_H
 #define TAPE_H
 
-#include <algorithm>
 #include <stdexcept>
+#include <algorithm>
 
 const short TAPE_LENGTH = 30000;
 

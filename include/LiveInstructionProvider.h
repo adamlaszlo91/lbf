@@ -3,7 +3,6 @@
 
 #include "InstructionProvider.h"
 
-
 class LiveInstructionProvider : public InstructionProvider{
   public:
     LiveInstructionProvider();

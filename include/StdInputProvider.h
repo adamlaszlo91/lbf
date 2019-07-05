@@ -1,7 +1,6 @@
 #ifndef STDINPUTPROVIDER_H
 #define STDINPUTPROVIDER_H
 
-#include <iostream>
 #include <InputProvider.h>
 #include <conio.h>
 

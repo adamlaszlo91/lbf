@@ -11,6 +11,7 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option parameters="examples\reverse.bf" />
 				<Compiler>
 					<Add option="-g" />
 					<Add directory="include" />
@@ -21,6 +22,7 @@
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option parameters="examples\reverse.bf" />
 				<Compiler>
 					<Add option="-O2" />
 					<Add directory="include" />
@@ -35,10 +37,13 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/BrainfuckExecutor.h" />
+		<Unit filename="include/Display.h" />
 		<Unit filename="include/FixedInstructionProvider.h" />
+		<Unit filename="include/IO.h" />
 		<Unit filename="include/InputProvider.h" />
 		<Unit filename="include/InstructionProvider.h" />
 		<Unit filename="include/LiveInstructionProvider.h" />
+		<Unit filename="include/StdDisplay.h" />
 		<Unit filename="include/StdInputProvider.h" />
 		<Unit filename="include/Tape.h" />
 		<Unit filename="lbf_1.0.c">
@@ -46,10 +51,13 @@
 		</Unit>
 		<Unit filename="main.cpp" />
 		<Unit filename="src/BrainfuckExecutor.cpp" />
+		<Unit filename="src/Display.cpp" />
 		<Unit filename="src/FixedInstructionProvider.cpp" />
+		<Unit filename="src/IO.cpp" />
 		<Unit filename="src/InputProvider.cpp" />
 		<Unit filename="src/InstructionProvider.cpp" />
 		<Unit filename="src/LiveInstructionProvider.cpp" />
+		<Unit filename="src/StdDisplay.cpp" />
 		<Unit filename="src/StdInputProvider.cpp" />
 		<Unit filename="src/Tape.cpp" />
 		<Extensions>

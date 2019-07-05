@@ -1,53 +1,45 @@
 #include <iostream>
-#include <fstream>
+
 #include "include/InstructionProvider.h"
 #include "include/FixedInstructionProvider.h"
 #include "include/LiveInstructionProvider.h"
 #include "include/BrainfuckExecutor.h"
 #include "include/StdInputProvider.h"
+#include "include/StdDisplay.h"
+#include "include/IO.h"
 
 using namespace std;
 
-string readFileContent(string fullPath){
-  ifstream fileStream(fullPath);
-  string content((std::istreambuf_iterator<char>(fileStream) ),(std::istreambuf_iterator<char>()) );
-  return content;
+void warnIfToManyArgumentsPassed(int argc){
+  if (argc > 2){
+    cout << "WARNING: Too many parameters passed, only the first one will be used." << endl;
+  }
 }
 
-bool doesFileExist(string fullPath){
-  FILE *file;
-  if((file = fopen(fullPath.c_str(),"r"))!=NULL){
-    fclose(file);
-    return true;
+InstructionProvider* createInstructionProvider(int argumentCount, char* argumentValues[]){
+  if (argumentCount <= 1){
+    return new LiveInstructionProvider();
   }else{
-    return false;
+    if (IO::fileExists(argumentValues[1])){
+      string fileContent = IO::readFileContent(argumentValues[1]);
+      return new FixedInstructionProvider(fileContent);
+    }else{
+      throw invalid_argument("The input file does not exist.");
+    }
   }
 }
 
 int main(int argc, char *argv[]){
-  InstructionProvider* instructionProvider;
-  // TODO: argc > 1
-  if (argc > 0){
-    // TODO: Use parameter
-    string path = "examples\\reverse.bf";
-    if (doesFileExist(path)){
-      string fileContent = readFileContent(path);
-      instructionProvider = new FixedInstructionProvider(fileContent);
-    }else{
-      cerr << "The input file does not exist: " << path;
-      return 1;
-    }
-  }else{
-    instructionProvider = new LiveInstructionProvider();
-  }
-
-  BrainfuckExecutor* executor = new BrainfuckExecutor(instructionProvider, new StdInputProvider());
+  warnIfToManyArgumentsPassed(argc);
   try{
+    InstructionProvider* instructionProvider = createInstructionProvider(argc, argv);
+    BrainfuckExecutor* executor = new BrainfuckExecutor(instructionProvider, new StdInputProvider(), new StdDisplay());
     executor->execute();
   }catch( const std::exception& e ) {
-    // do stuff with exception...
-    cerr << e.what();
+    cerr << "ERROR: " << e.what();
+    return 1;
   }
-
   return 0;
 }
+
+

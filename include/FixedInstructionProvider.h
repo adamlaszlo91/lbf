@@ -1,8 +1,9 @@
 #ifndef FIXEDINSTRUCTIONPROVIDER_H
 #define FIXEDINSTRUCTIONPROVIDER_H
 
+#include <string>
+#include <stdexcept>
 #include "InstructionProvider.h"
-#include <iostream>
 
 class FixedInstructionProvider : public InstructionProvider{
   public:
